@@ -23,3 +23,11 @@ class Student(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.std}"
+
+
+class City(models.Model):
+    name = models.CharField(max_length=50)
+    pincode = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.name} {self.pincode}"

@@ -25,4 +25,6 @@ urlpatterns = [
     path("organizations/<int:pk>", views.OrganizationDetail.as_view(), name="org_list"),
     path("students/", views.StudentList.as_view(), name="student_list"),
     path("students/<int:pk>", views.StudentDetail.as_view(), name="student_list"),
+    path("cities/", views.CityList.as_view(), name="city_list"),
+    path("cities/<int:pk>", views.CityDetail.as_view(), name="city_list"),
 ]

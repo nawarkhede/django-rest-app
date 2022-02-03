@@ -4,8 +4,9 @@ from firstapp.serializers import (
     EmployeeSerializer,
     OrganizationSerializer,
     StudentSerializer,
+    CitySerializer
 )
-from firstapp.models import Employee, Organization, Student
+from firstapp.models import Employee, Organization, Student, City
 
 # Create your views here.
 from rest_framework import status
@@ -129,3 +130,13 @@ class StudentDetail(
 
     def delete(self, request, pk):
         return self.destroy(request, pk)
+
+
+class CityList(generics.ListCreateAPIView):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+
+class CityDetail(generics.RetrieveUpdateDestroyAPIView):
+    queryset = City.objects.all()
+    serializer_class = CitySerializer
+
