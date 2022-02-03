@@ -1,6 +1,10 @@
 from django.http import JsonResponse, Http404
 from django.shortcuts import render
-from firstapp.serializers import EmployeeSerializer, OrganizationSerializer, StudentSerializer
+from firstapp.serializers import (
+    EmployeeSerializer,
+    OrganizationSerializer,
+    StudentSerializer,
+)
 from firstapp.models import Employee, Organization, Student
 
 # Create your views here.
@@ -57,7 +61,6 @@ def employee_details(request, pk):
 
 
 class OrganizationList(APIView):
-
     def get(self, request):
         serializer = OrganizationSerializer(Organization.objects.all(), many=True)
         return Response(serializer.data)
@@ -71,7 +74,6 @@ class OrganizationList(APIView):
 
 
 class OrganizationDetail(APIView):
-
     def get_object(self, pk):
         try:
             return Organization.objects.get(id=pk)
@@ -97,7 +99,9 @@ class OrganizationDetail(APIView):
         return Response(status.HTTP_204_NO_CONTENT)
 
 
-class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView):
+class StudentList(
+    mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView
+):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 
@@ -108,7 +112,12 @@ class StudentList(mixins.ListModelMixin, mixins.CreateModelMixin, generics.Gener
         return self.create(request)
 
 
-class StudentDetail(mixins.RetrieveModelMixin, mixins.UpdateModelMixin, mixins.DestroyModelMixin, generics.GenericAPIView):
+class StudentDetail(
+    mixins.RetrieveModelMixin,
+    mixins.UpdateModelMixin,
+    mixins.DestroyModelMixin,
+    generics.GenericAPIView,
+):
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
 

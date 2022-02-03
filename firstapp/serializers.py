@@ -7,10 +7,12 @@ class EmployeeSerializer(serializers.ModelSerializer):
         model = Employee
         fields = "__all__"
 
+
 class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:
         model = Organization
         fields = "__all__"
+
 
 class StudentSerializer(serializers.ModelSerializer):
     class Meta:
