@@ -33,12 +33,9 @@ urlpatterns = [
     path("cities/", views.CityList.as_view(), name="city_list"),
     path("cities/<int:pk>", views.CityDetail.as_view(), name="city_list"),
     path("persons/", include(router.urls)),
-    path('authors/', views.AuthorListView.as_view(), name='author_list'),
-    path('authors/<int:pk>', views.AuthorDetailView.as_view(), name='author_list'),
-
-    path('books/', views.BookListView.as_view(), name='books_list'),
-    path('books/<int:pk>', views.BookDetailView.as_view(), name='books_list'),
-
-    path('api-token-auth/', obtain_auth_token, name='api_token_auth')
-
+    path("authors/", views.AuthorListView.as_view(), name="author_list"),
+    path("authors/<int:pk>", views.AuthorDetailView.as_view(), name="author_list"),
+    path("books/", views.BookListView.as_view(), name="books_list"),
+    path("books/<int:pk>", views.BookDetailView.as_view(), name="books_list"),
+    path("api-token-auth/", obtain_auth_token, name="api_token_auth"),
 ]

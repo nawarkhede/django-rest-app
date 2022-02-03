@@ -48,12 +48,11 @@ class Author(models.Model):
     def __str__(self):
         return f"{self.name} {self.last_name}"
 
+
 class Book(models.Model):
     title = models.CharField(max_length=20)
     rating = models.CharField(max_length=10)
-    author = models.ForeignKey(Author, related_name='books', on_delete=models.CASCADE)
+    author = models.ForeignKey(Author, related_name="books", on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.title} {self.rating} {self.author}"
-
-

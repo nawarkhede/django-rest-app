@@ -7,7 +7,7 @@ from firstapp.serializers import (
     CitySerializer,
     PersonSerializer,
     AuthorSerializer,
-    BookSerializer
+    BookSerializer,
 )
 from firstapp.models import Employee, Organization, Student, City, Person, Author, Book
 
@@ -114,7 +114,7 @@ class StudentList(
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['name']
+    filterset_fields = ["name"]
 
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
@@ -159,19 +159,22 @@ class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
 
+
 class AuthorListView(generics.ListCreateAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
+
 
 class AuthorDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Author.objects.all()
     serializer_class = AuthorSerializer
 
+
 class BookListView(generics.ListCreateAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
 
+
 class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
-
