@@ -19,7 +19,6 @@ from firstapp import views
 
 
 urlpatterns = [
-    path('employees/', views.employee_list, name='employee_list'),
-    path('employees/<int:pk>', views.employee_details, name='employee_details'),
-
+    path("employees/", views.employee_list, name="employee_list"),
+    path("employees/<int:pk>", views.employee_details, name="employee_details"),
 ]

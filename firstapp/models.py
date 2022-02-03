@@ -6,4 +6,4 @@ class Employee(models.Model):
     salary = models.DecimalField(max_length=10, decimal_places=3, max_digits=30)
 
     def __str__(self):
-        return f'{self.name} {self.salary}'
+        return f"{self.name} {self.salary}"
