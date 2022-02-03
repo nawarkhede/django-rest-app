@@ -19,7 +19,7 @@ from firstapp import views
 from rest_framework.routers import DefaultRouter
 
 router = DefaultRouter()
-router.register('', views.PersonViewSet)
+router.register("", views.PersonViewSet)
 
 
 urlpatterns = [
@@ -31,5 +31,5 @@ urlpatterns = [
     path("students/<int:pk>", views.StudentDetail.as_view(), name="student_list"),
     path("cities/", views.CityList.as_view(), name="city_list"),
     path("cities/<int:pk>", views.CityDetail.as_view(), name="city_list"),
-    path("persons/", include(router.urls))
+    path("persons/", include(router.urls)),
 ]
