@@ -7,3 +7,19 @@ class Employee(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.salary}"
+
+
+class Organization(models.Model):
+    name = models.CharField(max_length=50)
+    address = models.CharField(max_length=300)
+
+    def __str__(self):
+        return f"{self.name} {self.address}"
+
+
+class Student(models.Model):
+    name = models.CharField(max_length=30)
+    std = models.IntegerField()
+
+    def __str__(self):
+        return f"{self.name} {self.std}"

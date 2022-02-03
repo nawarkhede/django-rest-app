@@ -21,4 +21,14 @@ from firstapp import views
 urlpatterns = [
     path("employees/", views.employee_list, name="employee_list"),
     path("employees/<int:pk>", views.employee_details, name="employee_details"),
+
+
+    path("organizations/", views.OrganizationList.as_view(), name="org_list"),
+    path("organizations/<int:pk>", views.OrganizationDetail.as_view(), name="org_list"),
+
+    path("students/", views.StudentList.as_view(), name="student_list"),
+    path("students/<int:pk>", views.StudentDetail.as_view(), name="student_list"),
+
+
+
 ]
