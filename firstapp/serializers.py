@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from firstapp.models import Employee, Organization, Student, City
+from firstapp.models import Employee, Organization, Student, City, Person
 
 
 class EmployeeSerializer(serializers.ModelSerializer):
@@ -24,3 +24,9 @@ class CitySerializer(serializers.ModelSerializer):
     class Meta:
         model = City
         fields = "__all__"
+
+
+class PersonSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Person
+        fields = '__all__'

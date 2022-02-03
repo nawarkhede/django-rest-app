@@ -5,8 +5,9 @@ from firstapp.serializers import (
     OrganizationSerializer,
     StudentSerializer,
     CitySerializer,
+    PersonSerializer,
 )
-from firstapp.models import Employee, Organization, Student, City
+from firstapp.models import Employee, Organization, Student, City, Person
 
 # Create your views here.
 from rest_framework import status
@@ -14,6 +15,7 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import generics, mixins
+from rest_framework import viewsets
 
 
 def index(request):
@@ -140,3 +142,8 @@ class CityList(generics.ListCreateAPIView):
 class CityDetail(generics.RetrieveUpdateDestroyAPIView):
     queryset = City.objects.all()
     serializer_class = CitySerializer
+
+
+class PersonViewSet(viewsets.ModelViewSet):
+    queryset = Person.objects.all()
+    serializer_class = PersonSerializer

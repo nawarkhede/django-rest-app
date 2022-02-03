@@ -31,3 +31,11 @@ class City(models.Model):
 
     def __str__(self):
         return f"{self.name} {self.pincode}"
+
+
+class Person(models.Model):
+    name = models.CharField(max_length=50)
+    last_name = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f"{self.name} {self.last_name}"
