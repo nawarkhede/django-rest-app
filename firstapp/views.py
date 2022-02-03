@@ -6,8 +6,10 @@ from firstapp.serializers import (
     StudentSerializer,
     CitySerializer,
     PersonSerializer,
+    AuthorSerializer,
+    BookSerializer
 )
-from firstapp.models import Employee, Organization, Student, City, Person
+from firstapp.models import Employee, Organization, Student, City, Person, Author, Book
 
 # Create your views here.
 from rest_framework import status
@@ -16,6 +18,9 @@ from rest_framework.decorators import api_view
 from rest_framework.views import APIView
 from rest_framework import generics, mixins
 from rest_framework import viewsets
+from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticated
 
 
 def index(request):
@@ -105,8 +110,14 @@ class OrganizationDetail(APIView):
 class StudentList(
     mixins.ListModelMixin, mixins.CreateModelMixin, generics.GenericAPIView
 ):
+    #  Django rest framework filter and authentication implemented
     queryset = Student.objects.all()
     serializer_class = StudentSerializer
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['name']
+
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
     def get(self, request):
         return self.list(request)
@@ -147,3 +158,20 @@ class CityDetail(generics.RetrieveUpdateDestroyAPIView):
 class PersonViewSet(viewsets.ModelViewSet):
     queryset = Person.objects.all()
     serializer_class = PersonSerializer
+
+class AuthorListView(generics.ListCreateAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+class AuthorDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Author.objects.all()
+    serializer_class = AuthorSerializer
+
+class BookListView(generics.ListCreateAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
+class BookDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
+
