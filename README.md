@@ -18,7 +18,7 @@ This repo have following views,
     1. CityList (without pk)
     2. CityDetail (with pk)
     
-5. class based views using viewset's and nested serializer
+5. class based views using viewset's
     1. PersonViewSet
 
 6. nested serializer
